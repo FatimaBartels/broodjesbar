@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 require_once "Broodje.php";
 
@@ -24,11 +25,11 @@ class BroodjesDataHandler
         $resultBroodje = [];
 
         foreach ($data as $row) {
-            $resultBroodje[] = Broodje::create(
-                (int)$row['ID'], 
+            $resultBroodje[] = Broodje::create(   
                 $row['Naam'],
                 $row['Omschrijving'], 
-                $row['Prijs']
+                (float)$row['Prijs'],
+                (int)$row['ID']
             );
 
 

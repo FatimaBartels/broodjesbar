@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 require_once "Gebruiker.php";
 
@@ -12,7 +13,7 @@ class GebruikersDataHandler
         $this->connect();
 
         $stmt = $this->dbh->prepare(
-            "select id, naam from gebruikers;"
+            "select id, naam, email, paswoord from gebruikers;"
         );
 
         $stmt->execute();
@@ -25,8 +26,10 @@ class GebruikersDataHandler
 
         foreach ($data as $row) {
             $resultGebruiker[] = Gebruiker::create(
-                (int)$row['id'], 
-                $row['naam']
+                $row['naam'],
+                $row['email'],
+                $row['paswoord'],
+                (int)$row['id']
             );
 
 

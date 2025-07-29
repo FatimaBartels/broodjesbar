@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 // Class Broodje.php
 
@@ -7,7 +8,7 @@ class Broodje
     private ?int $ID;
     private string $Naam;
     private string $Omschrijving;
-    private string $Prijs;
+    private float $Prijs;
    
   
 
@@ -22,11 +23,10 @@ class Broodje
     }
 
     public static function create(
-         string $Naam, string $Omschrijving, float $Prijs, ?int $ID=null): Broodje
-
-
+         string $Naam, string $Omschrijving, float $Prijs, ?int $ID=null
+         ): Broodje
     {
-        return new Broodje( $Naam, $Omschrijving, $Prijs, $ID);
+        return new Broodje( $ID, $Naam, $Omschrijving, $Prijs );
     }
 
 

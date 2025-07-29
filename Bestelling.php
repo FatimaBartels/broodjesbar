@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 // Class Bestelling.php
 
 require_once "Gebruiker.php";
@@ -74,16 +75,17 @@ class Bestelling
         return new Gebruiker(0, "Onbekend", "Onbekend", "Onbekend");
     }
 
-    $gebruiker = new Gebruiker(
-    $gebruikerResult["id"],
-    $gebruikerResult["naam"],
-    $gebruikerResult["email"], 
-    $gebruikerResult["paswoord"]
-    
+        $gebruiker = new Gebruiker(
+        (int)$gebruikerResult["id"],
+        $gebruikerResult["naam"],
+        $gebruikerResult["email"], 
+        $gebruikerResult["paswoord"]
+        
     
     );
 
     $this->disconnect();
+
     return $gebruiker;
     }
      
@@ -92,23 +94,24 @@ class Bestelling
 
         $this->connect();
 
-        $stmt = $this->dbh->prepare("SELECT * FROM broodjes WHERE id = :id");
+        $stmt = $this->dbh->prepare("SELECT * FROM broodjes WHERE ID = :ID");
     
-        $stmt->execute([':id' => $this->broodjeId]);
+        $stmt->execute([':ID' => $this->broodjeId]);
 
         $broodjeResult = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$broodjeResult) {
+
         $this->disconnect();
         return new Broodje(0, "Onbekend", "Onbekend", 0.0);
     }
 
       
         $broodje = new Broodje(
-        $broodjeResult["id"],
+        (int)$broodjeResult["ID"],
         $broodjeResult["Naam"],
         $broodjeResult["Omschrijving"],
-        $broodjeResult["Prijs"]
+        (float)$broodjeResult["Prijs"]
         
         );
 
