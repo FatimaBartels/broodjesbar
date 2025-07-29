@@ -15,9 +15,10 @@ $bestellingen = $bestellingHandler->getBestellingsList();
     <link rel="stylesheet" href="css/style.css"> 
 
    
-            
+  
     <div class="container">
-         <h3>Bestellingen Overzicht </h3>  
+        <h1>Broodjesbar</h1> 
+         <h3>Overzicht van de bestellingen </h3>  
             <table>
                 <thead>
                     <tr>
@@ -33,7 +34,7 @@ $bestellingen = $bestellingHandler->getBestellingsList();
                         <td><?= $bestelling->getGebruiker()->getNaam() ?></td>
                         <td><?= $bestelling->getBroodje()->getNaam() ?></td>
                         <td><?= $bestelling->getDatum()->format('d-m-Y H:i'); ?></td>
-                        <td><a href="delete-bestelling.php?id=<?= $bestelling->getId() ?> "><img src="images/delete.png" class="icon-delete"></td>
+                        <td><a href="delete-bestelling.php?id=<?= $bestelling->getId() ?> "><img src="images/delete.png" class="icon"></td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>

@@ -19,9 +19,9 @@ session_start();
 
     <link rel="stylesheet" href="css/style.css"> 
    
-
+     
     <div class="container">
-        <h1>Broodjesbar</h1>
+    <h1>Broodjesbar</h1>
 
         <?php if (isset($_SESSION['success'])): ?>
         <p class="success-message"><?= $_SESSION['success']; unset($_SESSION['success']); ?></p>

@@ -39,7 +39,90 @@ class BroodjesDataHandler
         return $resultBroodje;
     }
 
-   
+    public function addBrood(Broodje $brood)
+    {
+        $this->connect();
+        $stmt = $this->dbh->prepare(
+            "INSERT INTO broodjes (Naam, Omschrijving, Prijs)
+                    VALUES (:Naam, :Omschrijving, :Prijs);"
+        );
+    
+    
+        $stmt->execute(
+            [
+                ':Naam'  => $brood->getNaam(),
+                ':Omschrijving' => $brood->getOmschrijving(),
+                ':Prijs' => $brood->getPrijs(),
+
+            ]
+            );
+           
+            $this->disconnect();
+    
+        
+
+    }     
+    
+
+    public function removeBroodById(int $ID)
+        {
+        $this->connect();
+        $stmt = $this->dbh->prepare(
+            "DELETE FROM broodjes where ID = :ID;"
+        );
+
+        $stmt->execute([':ID' => $ID]);
+        $this->disconnect();
+    }
+
+
+    public function getBroodById(int $ID): ?Broodje
+    {
+        $this->connect();
+        $stmt = $this->dbh->prepare(
+            "select ID, Naam, Omschrijving, Prijs from broodjes where ID = :ID"
+        );
+        $stmt->execute([':ID' => $ID]);
+
+        $broodRecord = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $this->disconnect();
+
+        if (empty($broodRecord)) return null;
+
+        return Broodje::create(
+            $broodRecord['Naam'],
+            $broodRecord['Omschrijving'],
+            (float)$broodRecord['Prijs'],
+            (int)$broodRecord['ID']
+        );
+    }
+
+    public function updateBrood(Broodje $brood) 
+        {
+        $this->connect();
+        $stmt = $this->dbh->prepare(
+            "update broodjes 
+                    set Naam = :Naam,
+                        Omschrijving = :Omschrijving,
+                        Prijs = :Prijs
+                    where ID = :ID; "
+        );
+
+
+        $stmt->execute(
+            [
+                ':Naam'    => $brood->getNaam(),
+                ':Omschrijving' => $brood->getOmschrijving(),
+                ':Prijs' => $brood->getPrijs(),
+                ':ID'       => $brood->getId(),
+
+            ]
+        );
+       
+        $this->disconnect();
+        }
+  
     
 
     private function connect()

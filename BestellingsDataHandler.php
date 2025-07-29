@@ -132,14 +132,14 @@ class BestellingsDataHandler
             (int)$bestel['gebruikerId'],
             $datum
     );
-}
+    }
 
 
         return $result;
     }
     
-       public function removeBestellingById(int $id)
-    {
+    public function removeBestellingById(int $id)
+        {
         $this->connect();
         $stmt = $this->dbh->prepare(
             "DELETE FROM bestellingen where id = :id;"
