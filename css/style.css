@@ -125,17 +125,10 @@ input[type="email"] {
 }
 
 tr.besteld {
-  background-color: #fff9e6 !important;
-}
-tr.gemaakt {
-  background-color: #e6f0ff !important;
-}
-
-.gemaakt {
-  background: #007bff;
+  background-color: #a77aa1 !important;
   color: white;
 }
-.afgehaald {
-  background: #28a745;
+tr.gemaakt {
+  background-color: #61a2b3f6 !important;
   color: white;
 }

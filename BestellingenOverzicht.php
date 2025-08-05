@@ -62,9 +62,10 @@ function getStatusNaam(StatussenDataHandler $handler, array &$cache, int $status
                         // broodje
                         $broodje = $bestelling->getBroodje();
                     ?> 
-                    <tr>
+                    <?php $rowClass = strtolower(trim($statusNaam)); ?>
+                    <tr class="<?= $rowClass ?>">
                         <td><?= $gebruiker->getGebruikerVoorNaam() ?></td>
-                         <td><?= $gebruiker->getGebruikerNaam() ?></td>
+                        <td><?= $gebruiker->getGebruikerNaam() ?></td>
                         <td><?= $broodje->getBroodNaam() ?></td>
                         <td><?= $bestelling->getDatum()->format('d-m-Y H:i'); ?></td>
                         <td><?= $statusNaam ?></td>
