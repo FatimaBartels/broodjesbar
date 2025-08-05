@@ -7,36 +7,43 @@ declare(strict_types=1);
 class Gebruiker
 {
     private ?int $id;
+    private string $voornaam;
     private string $naam;
     private string $email;
-    private string $paswoord;
+  
    
   
 
-    public function __construct(?int $id, string $naam, string $email, string $paswoord)
+    public function __construct(?int $id, string $voornaam, string $naam, string $email)
     {
         $this->id    = $id;
+        $this->voornaam  = $voornaam;
         $this->naam  = $naam;
         $this->email = $email;
-        $this->paswoord = $paswoord;
+      
       
        
     }
 
     public static function create(
-         string $naam, string $email, string $paswoord, ?int $id=null,
+         string $voornaam, string $naam, string $email, ?int $id=null,
         ): Gebruiker
 
     {
-        return new Gebruiker($id, $naam, $email, $paswoord );
+        return new Gebruiker($id, $voornaam, $naam, $email);
     }
 
-    public function getId(): ?int
+    public function getGebruikersId(): ?int
     {
         return $this->id;
     }
 
-    public function getNaam(): string
+     public function getGebruikerVoorNaam(): string
+    {
+        return $this->voornaam;
+    }
+
+    public function getGebruikerNaam(): string
     {
         return $this->naam;
     }
@@ -44,11 +51,6 @@ class Gebruiker
     public function getEmail(): string
     {
         return $this->email;
-    }
-
-    public function getPaswoord(): string
-    {
-        return $this->paswoord;
     }
 
 }

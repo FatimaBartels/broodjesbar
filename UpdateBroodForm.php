@@ -34,14 +34,14 @@ if (null === $brood) {
     <form action="Update-brood.php" method="post">
         <input type="text"
             name="ID"
-            value="<?= $brood->getId(); ?>"
+            value="<?= $brood->getBroodId(); ?>"
             hidden="hidden"
         />
     <br/>
         <label>Naam: </label>
         <input type="text"
             name="Naam"
-            value="<?= $brood->getNaam(); ?>"
+            value="<?= $brood->getBroodNaam(); ?>"
         />
         <br/>
         <label>Omschrijving: </label>

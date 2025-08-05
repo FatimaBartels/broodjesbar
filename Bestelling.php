@@ -1,65 +1,65 @@
 <?php
-declare(strict_types = 1);
-// Class Bestelling.php
+
+declare(strict_types=1);
 
 require_once "Gebruiker.php";
 require_once "Broodje.php";
 
 
-
 class Bestelling
 {
     private ?int $id;
-    private ?int $broodjeId;
-    private ?int $gebruikerId;
+    private int $broodjeId;
+    private int $gebruikerId;
     private DateTime $datum;
+    private int $statusId;
 
-    private ?PDO $dbh = null;
-    
+     private ?PDO $dbh = null;
 
-    public function __construct(?int $id, ?int $broodjeId, ?int $gebruikerId, DateTime $datum)
-    {   
-        $this->id = $id;
-        $this->broodjeId  = $broodjeId;
-        $this->gebruikerId = $gebruikerId;
-        $this->datum  = $datum;
-       
-       
-       
-    }
-
-    public static function create(
-        ?int $id, ?int $broodjeId, ?int $gebruikerId, DateTime $datum
-        ): Bestelling
-
+    private function __construct(?int $id, int $broodjeId, int $gebruikerId, DateTime $datum, int $statusId)
     {
-        return new Bestelling($id, $broodjeId, $gebruikerId, $datum);
+        $this->id = $id;
+        $this->broodjeId = $broodjeId;
+        $this->gebruikerId = $gebruikerId;
+        $this->datum = $datum;
+        $this->statusId = $statusId;
     }
 
-    
+    public static function create(?int $id, int $broodjeId, int $gebruikerId, DateTime $datum, int $statusId): Bestelling
+    {
+        return new Bestelling($id, $broodjeId, $gebruikerId, $datum, $statusId);
+    }
+
+   
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getBroodjeId(): ?int
+    public function getBroodjeId(): int
     {
         return $this->broodjeId;
     }
 
-    public function getGebruikerId(): ?int
+    public function getGebruikerId(): int
     {
         return $this->gebruikerId;
     }
 
-    public function getDatum(): ?DateTime
+    public function getDatum(): DateTime
     {
         return $this->datum;
     }
 
+     public function getStatusId(): int
+    {
+    return $this->statusId;
+    }
 
-   public function getGebruiker() {
+
+
+    public function getGebruiker() {
     
     $this->connect();
 
@@ -77,9 +77,9 @@ class Bestelling
 
         $gebruiker = new Gebruiker(
         (int)$gebruikerResult["id"],
-        $gebruikerResult["naam"],
-        $gebruikerResult["email"], 
-        $gebruikerResult["paswoord"]
+        $gebruikerResult["voornaam"],
+        $gebruikerResult["naam"], 
+        $gebruikerResult["email"]
         
     
     );

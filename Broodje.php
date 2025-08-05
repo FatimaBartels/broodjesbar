@@ -30,12 +30,12 @@ class Broodje
     }
 
 
-    public function getId(): ?int
+    public function getBroodId(): ?int
     {
         return $this->ID;
     }
 
-    public function getNaam(): string
+    public function getBroodNaam(): string
     {
         return $this->Naam;
     }

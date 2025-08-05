@@ -74,8 +74,8 @@ tr:hover {
 
 .btn {
   display: inline-block;
-  margin-top: 20px;
-  padding: 12px 20px;
+  margin: 6px 0 6px 0;
+  padding: 10px 15px;
   background-color: #ff7043;
   color: white;
   font-size: 1rem;
@@ -109,12 +109,33 @@ tr:hover {
   background-color: #e53935;
 }
 
-select,
-input[type="text"] {
+.tijd,
+input[type="text"],
+input[type="email"] {
   padding: 10px;
   border-radius: 6px;
   border: 1px solid #ccc;
   font-size: 0.95rem;
   width: 50%;
   margin-bottom: 10px;
+}
+
+#link {
+  text-decoration: none;
+}
+
+tr.besteld {
+  background-color: #fff9e6 !important;
+}
+tr.gemaakt {
+  background-color: #e6f0ff !important;
+}
+
+.gemaakt {
+  background: #007bff;
+  color: white;
+}
+.afgehaald {
+  background: #28a745;
+  color: white;
 }

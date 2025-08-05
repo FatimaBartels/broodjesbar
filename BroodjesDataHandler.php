@@ -50,7 +50,7 @@ class BroodjesDataHandler
     
         $stmt->execute(
             [
-                ':Naam'  => $brood->getNaam(),
+                ':Naam'  => $brood->getBroodNaam(),
                 ':Omschrijving' => $brood->getOmschrijving(),
                 ':Prijs' => $brood->getPrijs(),
 
@@ -112,10 +112,10 @@ class BroodjesDataHandler
 
         $stmt->execute(
             [
-                ':Naam'    => $brood->getNaam(),
+                ':Naam'    => $brood->getBroodNaam(),
                 ':Omschrijving' => $brood->getOmschrijving(),
                 ':Prijs' => $brood->getPrijs(),
-                ':ID'       => $brood->getId(),
+                ':ID'       => $brood->getBroodId(),
 
             ]
         );

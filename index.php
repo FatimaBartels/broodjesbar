@@ -12,6 +12,7 @@ $gebruikers = $listGebruiker->getGebruikersList();
 
 $listBroodje = new BroodjesDataHandler();
 $broodjes = $listBroodje->getBroodjesList();
+
 session_start();
 
 ?>
@@ -33,22 +34,6 @@ session_start();
 
        
         <form action="Add-bestelling.php" method="post" class="bestel-form">
-       
-         <h4>Kies gebruiker</h4>
-
-            <label for="gebruiker">Gebruiker:</label>
-            <select id="gebruiker" name="gebruikerId"  required>
-                <option value="">.. Kies Gebruiker ..</option>
-                    <?php foreach ($gebruikers as $gebruiker): ?>
-                        <option value="<?= $gebruiker->getId(); ?>">
-                            <?= $gebruiker->getNaam(); ?> 
-                        </option>
-                    <?php endforeach; ?>
-            </select>
-    
-
-        
-       
             <h4>Kies jouw brood hier: </h4>
             <table>
                 <thead>
@@ -56,14 +41,13 @@ session_start();
                         <th>Brood Naam</th>
                         <th>Omschrijving</th>
                         <th>Prijs</th>
-
                     </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($broodjes as $brood): ?> 
                         <tr>
-                            <td><input type="radio" name="broodjeId" value="<?= $brood->getId(); ?>" required>
-                             <?= $brood->getNaam() ?> </td>
+                            <td><input type="radio" name="broodjeId" value="<?= $brood->getBroodId(); ?>" required>
+                             <?= $brood->getBroodNaam() ?> </td>
                             <td><?= $brood->getOmschrijving() ?></td>
                             <td>€ <?= $brood->getPrijs() ?></td>
                         </tr>
@@ -71,7 +55,23 @@ session_start();
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            <button type="submit" class="btn">Bestel</button>
+            <h4>Vul jouw gegevens hier</h4>
+          
+                    <label for="voornaam">Voornaam:</label>
+                    <input type="text" name="voornaam" required>
+                    <br/>
+                    <label for="achternaam">Achternaam:</label>
+                    <input type="text" name="achternaam" required>
+                    <br/>
+                    <label for="email">E-mail:</label>
+                    <input type="email" name="email" required>
+                    <br/>
+                    <br/>
+                    <label for="tijdstip">Afhaalmoment:</label>
+                    <input type="datetime-local" name="tijdstip" class="tijd" required>
+                     <br/>
+            
+                    <button type="submit" class="btn">Bestellen</button>
       
         </form>
   </div>

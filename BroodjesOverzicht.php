@@ -29,10 +29,10 @@ $broodjes = $broodjeHandler->getBroodjesList();
                 <tbody>
                 <?php foreach ($broodjes as $broodje): ?> 
                     <tr>
-                        <td><?= $broodje->getNaam(); ?></td>
+                        <td><?= $broodje->getBroodNaam(); ?></td>
                         <td><?= $broodje->getOmschrijving() ?></td>
                         <td>€ <?= $broodje->getPrijs(); ?></td>
-                        <td><a href="UpdateBroodForm.php?id=<?= $broodje->getId() ?> "><img src="images/edit.png" class="icon"></a> <span> | </span> <a href="Delete-brood.php?id=<?= $broodje->getId() ?> "><img src="images/delete.png" class="icon"></a></td>
+                        <td><a href="UpdateBroodForm.php?id=<?= $broodje->getBroodId() ?> "><img src="images/edit.png" class="icon"></a> <span> | </span> <a href="Delete-brood.php?id=<?= $broodje->getBroodId() ?> "><img src="images/delete.png" class="icon"></a></td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
