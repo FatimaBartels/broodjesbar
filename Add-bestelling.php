@@ -33,7 +33,7 @@ if ($gekozen < $minTijd) {
      $_SESSION['error'] = "Het afhaalmoment moet minstens 30 minuten in de toekomst liggen.";
     header("Location: index.php");
     exit;
-    //die("Het afhaalmoment moet minstens 30 minuten in de toekomst liggen.");
+    
 }
 
 // maak verbinding naar de database
@@ -67,7 +67,7 @@ if (!$statusBesteld) {
     $_SESSION['error'] = "Status 'Besteld' bestaat niet in de database.";
     header("Location: index.php");
     exit;
-    //die("Status 'Besteld' bestaat niet in de database.");
+    
 }
 $statusId = $statusBesteld->getStatusId();
 
@@ -79,16 +79,16 @@ if ($bestellingHandler->bestellingToegevoegd($broodjeId, $gebruikerId)) {
     exit;
 }
 
-// bouw Bestelling-object
+
 $bestelling = Bestelling::create(
     null,
     $broodjeId,
     $gebruikerId,
-    $gekozen,  // gekozen datum
+    $gekozen,  
     $statusId
 );
 
-// toevoegen
+
 $bestellingHandler->addBestelling($bestelling);
 
 $_SESSION['success'] = "Bestelling geplaatst voor {$voornaam} {$achternaam}, afhaling op " . $gekozen->format('d-m-Y H:i');

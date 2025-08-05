@@ -49,6 +49,7 @@ function getStatusNaam(StatussenDataHandler $handler, array &$cache, int $status
                 <tbody>
                 <?php foreach ($bestellingen as $bestelling): ?>
                       <?php
+
                         // status object
                         $statusId = $bestelling->getStatusId();
                         if (!isset($statusCache[$statusId])) {
@@ -57,9 +58,7 @@ function getStatusNaam(StatussenDataHandler $handler, array &$cache, int $status
                         $statusObj = $statusCache[$statusId];
                         $statusNaam = $statusObj ? $statusObj->getStatus() : 'Onbekend';
 
-                        // gebruiker
                         $gebruiker = $bestelling->getGebruiker();
-                        // broodje
                         $broodje = $bestelling->getBroodje();
                     ?> 
                     <?php $rowClass = strtolower(trim($statusNaam)); ?>
